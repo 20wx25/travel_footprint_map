@@ -304,7 +304,7 @@
 /* 世界地图区域 */
 .worldMapSection {
   margin: 0 var(--spacing-xl) var(--spacing-m);
-  height: 300px;
+  height: 500px;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);

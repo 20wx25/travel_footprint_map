@@ -74,13 +74,17 @@ const Statistics = ({ markers = [], onBack }) => {
     const monthlyStats = {}
     markers.forEach(marker => {
       // 添加初始访问
-      const initialMonth = marker.visitDate.substring(0, 7) // YYYY-MM
-      monthlyStats[initialMonth] = (monthlyStats[initialMonth] || 0) + 1
+      if (marker.visitDate) {
+        const initialMonth = marker.visitDate.substring(0, 7) // YYYY-MM
+        monthlyStats[initialMonth] = (monthlyStats[initialMonth] || 0) + 1
+      }
 
       // 添加后续访问
       marker.visits?.forEach(visit => {
-        const month = visit.visitDate.substring(0, 7) // YYYY-MM
-        monthlyStats[month] = (monthlyStats[month] || 0) + 1
+        if (visit.visitDate) {
+          const month = visit.visitDate.substring(0, 7) // YYYY-MM
+          monthlyStats[month] = (monthlyStats[month] || 0) + 1
+        }
       })
     })
 
@@ -88,13 +92,17 @@ const Statistics = ({ markers = [], onBack }) => {
     const yearlyStats = {}
     markers.forEach(marker => {
       // 添加初始访问
-      const initialYear = marker.visitDate.substring(0, 4) // YYYY
-      yearlyStats[initialYear] = (yearlyStats[initialYear] || 0) + 1
+      if (marker.visitDate) {
+        const initialYear = marker.visitDate.substring(0, 4) // YYYY
+        yearlyStats[initialYear] = (yearlyStats[initialYear] || 0) + 1
+      }
 
       // 添加后续访问
       marker.visits?.forEach(visit => {
-        const year = visit.visitDate.substring(0, 4) // YYYY
-        yearlyStats[year] = (yearlyStats[year] || 0) + 1
+        if (visit.visitDate) {
+          const year = visit.visitDate.substring(0, 4) // YYYY
+          yearlyStats[year] = (yearlyStats[year] || 0) + 1
+        }
       })
     })
 

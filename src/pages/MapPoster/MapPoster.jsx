@@ -96,6 +96,9 @@ const MapPoster = ({ markers = [], onBack }) => {
 
     setIsGenerating(true)
     try {
+      // 等待地图渲染完成
+      await new Promise(resolve => setTimeout(resolve, 500))
+
       const canvas = await html2canvas(posterRef.current, {
         backgroundColor: config.theme === 'custom' && config.customBackground ? null : '#ffffff',
         scale: 2, // 高清输出
@@ -105,7 +108,7 @@ const MapPoster = ({ markers = [], onBack }) => {
         foreignObjectRendering: false
       })
 
-      // 转换为图片并下载 - 修复格式问题
+      // 转换为图片并下载
       canvas.toBlob((blob) => {
         if (!blob) {
           showError('生成图片失败')
@@ -120,7 +123,7 @@ const MapPoster = ({ markers = [], onBack }) => {
         // 清理
         setTimeout(() => URL.revokeObjectURL(url), 100)
         success('海报已下载！')
-      }, 'image/png', 1.0) // 明确指定MIME类型和质量
+      }, 'image/png', 1.0)
     } catch (err) {
       console.error('生成海报失败:', err)
       showError('生成海报失败，请重试')
@@ -308,13 +311,6 @@ const MapPoster = ({ markers = [], onBack }) => {
                 <div className={styles.posterSubtitle}>{config.subtitle}</div>
               </div>
 
-              {/* 真实地图 */}
-              {markers.length > 0 && (
-                <div className={styles.worldMapSection}>
-                  <PosterMap markers={markers} />
-                </div>
-              )}
-
               {/* 统计卡片 */}
               <div className={styles.statsSection}>
               <div className={styles.statBox}>
@@ -339,19 +335,10 @@ const MapPoster = ({ markers = [], onBack }) => {
               </div>
             </div>
 
-              {/* 地点列表 */}
-              {topLocations.length > 0 && (
-                <div className={styles.locationsSection}>
-                <div className={styles.locationsSectionTitle}>热门地点</div>
-                <div className={styles.locationsList}>
-                  {topLocations.map((location, index) => (
-                    <div key={index} className={styles.locationItem}>
-                      <span className={styles.locationRank}>{index + 1}</span>
-                      <span className={styles.locationName}>{location.name}</span>
-                      <span className={styles.locationVisits}>{location.visits}次</span>
-                    </div>
-                  ))}
-                </div>
+              {/* 真实地图 */}
+              {markers.length > 0 && (
+                <div className={styles.worldMapSection}>
+                  <PosterMap markers={markers} />
                 </div>
               )}
 

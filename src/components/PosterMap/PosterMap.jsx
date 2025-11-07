@@ -26,62 +26,79 @@ const PosterMap = ({ markers = [], className = '' }) => {
     // 清理旧地图实例
     if (mapInstanceRef.current) {
       mapInstanceRef.current.remove()
+      mapInstanceRef.current = null
     }
 
-    // 创建地图实例
-    const map = L.map(mapContainerRef.current, {
-      zoomControl: false,
-      attributionControl: false,
-      dragging: false,
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-      boxZoom: false,
-      keyboard: false,
-      tap: false,
-      touchZoom: false
-    })
+    // 延迟初始化，等待DOM完全渲染
+    const initTimer = setTimeout(() => {
+      if (!mapContainerRef.current) return
 
-    mapInstanceRef.current = map
+      console.log('初始化地图，容器尺寸:', mapContainerRef.current.offsetWidth, 'x', mapContainerRef.current.offsetHeight)
 
-    // 添加瓦片层
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-    }).addTo(map)
-
-    // 添加标记点
-    const bounds = L.latLngBounds()
-    markers.forEach(marker => {
-      const latlng = [marker.latitude, marker.longitude]
-      bounds.extend(latlng)
-
-      // 创建自定义图标
-      const customIcon = L.divIcon({
-        className: 'custom-marker',
-        html: `<div style="
-          width: 16px;
-          height: 16px;
-          background-color: ${marker.color || '#FF6B6B'};
-          border: 3px solid white;
-          border-radius: 50%;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        "></div>`,
-        iconSize: [16, 16],
-        iconAnchor: [8, 8]
+      // 创建地图实例
+      const map = L.map(mapContainerRef.current, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,
+        touchZoom: false
       })
 
-      L.marker(latlng, { icon: customIcon }).addTo(map)
-    })
+      mapInstanceRef.current = map
 
-    // 自动调整视图以显示所有标记
-    if (bounds.isValid()) {
-      map.fitBounds(bounds, {
-        padding: [50, 50],
-        maxZoom: 4 // 限制最大缩放级别，确保能看到大洲
+      // 添加瓦片层
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+      }).addTo(map)
+
+      // 添加标记点
+      const bounds = L.latLngBounds()
+      markers.forEach(marker => {
+        const latlng = [marker.latitude, marker.longitude]
+        bounds.extend(latlng)
+
+        // 创建自定义图标
+        const customIcon = L.divIcon({
+          className: 'custom-marker',
+          html: `<div style="
+            width: 16px;
+            height: 16px;
+            background-color: ${marker.color || '#FF6B6B'};
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+          "></div>`,
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        })
+
+        L.marker(latlng, { icon: customIcon }).addTo(map)
       })
-    }
+
+      // 自动调整视图以显示所有标记
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, {
+          padding: [50, 50],
+          maxZoom: 4 // 限制最大缩放级别，确保能看到大洲
+        })
+      }
+
+      // 强制刷新地图尺寸
+      setTimeout(() => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize()
+          console.log('地图尺寸已刷新')
+        }
+      }, 100)
+    }, 200)
 
     // 清理函数
     return () => {
+      clearTimeout(initTimer)
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove()
         mapInstanceRef.current = null
