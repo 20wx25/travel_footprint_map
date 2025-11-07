@@ -1,0 +1,80 @@
+/**
+ * 开关切换样式
+ * Toggle Switch Styles
+ */
+
+.toggleContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggleContainer.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  background: var(--color-border-medium);
+  border-radius: var(--radius-full);
+  transition: background-color var(--duration-fast) var(--ease);
+}
+
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform var(--duration-fast) var(--ease);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 选中状态 */
+.input:checked + .switch {
+  background: var(--color-accent-primary);
+}
+
+.input:checked + .switch .slider {
+  transform: translateX(24px);
+}
+
+/* 悬停状态 */
+.toggleContainer:not(.disabled):hover .switch {
+  box-shadow: 0 0 0 2px rgba(107, 165, 214, 0.2);
+}
+
+/* 焦点状态 */
+.input:focus + .switch {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* 标签文字 */
+.label {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+/* 减少动效偏好支持 */
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .slider {
+    transition: none;
+  }
+}

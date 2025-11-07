@@ -1,0 +1,497 @@
+/**
+ * 用户设置页面样式
+ * User Settings Page Styles
+ */
+
+/* ========================================
+   页面容器
+   ======================================== */
+
+.settingsPage {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+}
+
+
+/* ========================================
+   顶部导航栏
+   ======================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-light);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 var(--spacing-l);
+  z-index: var(--z-header);
+  box-shadow: var(--shadow-light);
+}
+
+.navLeft {
+  justify-self: start;
+}
+
+.navCenter {
+  justify-self: center;
+}
+
+.navRight {
+  justify-self: end;
+}
+
+.backButton {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.backButton:hover {
+  color: var(--color-accent-hover);
+}
+
+.pageTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+
+/* ========================================
+   内容区
+   ======================================== */
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+
+/* ========================================
+   分区
+   ======================================== */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+
+/* ========================================
+   用户信息卡片
+   ======================================== */
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-l);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--color-border-light);
+}
+
+.avatarContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.userAvatar {
+  font-size: 64px;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  border-radius: 50%;
+  border: 3px solid var(--color-border-light);
+}
+
+.userAvatarImage {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-border-light);
+}
+
+.avatarUploadButton {
+  padding: var(--spacing-xs) var(--spacing-s);
+  background: var(--color-accent-primary);
+  color: white;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease);
+  white-space: nowrap;
+}
+
+.avatarUploadButton:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.avatarInput {
+  display: none;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userName {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.userEmail {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+
+/* ========================================
+   设置卡片
+   ======================================== */
+
+.settingCard {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+}
+
+.settingContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-l);
+  padding: var(--spacing-l);
+}
+
+.settingInfo {
+  flex: 1;
+}
+
+.settingLabel {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.settingDescription {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ========================================
+   提示框
+   ======================================== */
+
+.notice {
+  padding: var(--spacing-m) var(--spacing-l);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-accent-primary);
+}
+
+.noticeText {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ========================================
+   分享链接
+   ======================================== */
+
+.shareLinkContainer {
+  padding: var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.linkBox {
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+}
+
+.linkText {
+  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
+  color: var(--color-accent-primary);
+  word-break: break-all;
+}
+
+.hint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  text-align: center;
+}
+
+.shareInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-m);
+  margin-top: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.shareInfoText {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ========================================
+   设置项
+   ======================================== */
+
+.settingItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-l);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease);
+}
+
+.settingItem:last-child {
+  border-bottom: none;
+}
+
+.settingItem:not(:disabled):hover {
+  background: var(--color-bg-secondary);
+}
+
+.settingItem:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.settingItemIcon {
+  font-size: 24px;
+}
+
+.settingItemText {
+  flex: 1;
+  text-align: left;
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.badge {
+  font-size: var(--font-size-small);
+  color: var(--color-text-tertiary);
+  padding: var(--spacing-xs) var(--spacing-s);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+
+/* ========================================
+   关于卡片
+   ======================================== */
+
+.aboutCard {
+  padding: var(--spacing-l);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.aboutText {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xs) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+    padding: 0 var(--spacing-m);
+  }
+
+  .pageTitle {
+    font-size: var(--font-size-h3);
+  }
+
+  .content {
+    padding: var(--spacing-l) var(--spacing-m);
+    gap: var(--spacing-l);
+  }
+
+  .userCard {
+    padding: var(--spacing-l);
+    gap: var(--spacing-m);
+  }
+
+  .userAvatar {
+    font-size: 48px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .userName {
+    font-size: var(--font-size-h3);
+  }
+
+  .settingContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-m);
+  }
+
+  .shareLinkContainer {
+    padding: var(--spacing-m);
+  }
+
+  .settingItem {
+    padding: var(--spacing-m);
+  }
+
+  .dataActions {
+    flex-direction: column;
+  }
+
+  .dataButton,
+  .importButton {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
+   数据管理
+   ======================================== */
+
+.dataManagementInfo {
+  padding: var(--spacing-m);
+}
+
+.dataInfoText {
+  margin: 0;
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.dataActions {
+  display: flex;
+  gap: var(--spacing-m);
+  padding: 0 var(--spacing-m) var(--spacing-m);
+}
+
+.dataButton {
+  flex: 1;
+}
+
+.importButton {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--color-accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  text-decoration: none;
+}
+
+.importButton:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.importButton:active {
+  transform: translateY(0);
+}
+
+.importInput {
+  display: none;
+}
+
+.dataHint {
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  margin-top: var(--spacing-s);
+}
+
+.hintText {
+  margin: 0;
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .settingItem {
+    transition: none;
+  }
+}

@@ -1,0 +1,162 @@
+/**
+ * 添加标记表单样式
+ * Add Marker Form Styles
+ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+/* 区块 */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+
+/* ========================================
+   位置信息显示
+   ======================================== */
+
+.locationSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.coordinateLabel {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* 地址信息 */
+.addressInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-s);
+  background: white;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.addressLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.addressValue {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  word-break: break-word;
+}
+
+/* 坐标信息 */
+.coordinates {
+  display: flex;
+  gap: var(--spacing-m);
+  padding: var(--spacing-s);
+  background: white;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.coordinateItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.coordinateType {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.coordinateValue {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent-primary);
+  font-family: 'Courier New', monospace;
+}
+
+
+/* ========================================
+   提示信息
+   ======================================== */
+
+.hint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-m);
+  background: rgba(107, 165, 214, 0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(107, 165, 214, 0.2);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ========================================
+   按钮组
+   ======================================== */
+
+.buttonGroup {
+  display: flex;
+  gap: var(--spacing-m);
+  justify-content: flex-end;
+  padding-top: var(--spacing-m);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.buttonGroup button {
+  min-width: 100px;
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .form {
+    gap: var(--spacing-m);
+  }
+
+  .coordinates {
+    flex-direction: column;
+    gap: var(--spacing-s);
+  }
+
+  .coordinateItem {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buttonGroup {
+    flex-direction: column-reverse;
+  }
+
+  .buttonGroup button {
+    width: 100%;
+  }
+}

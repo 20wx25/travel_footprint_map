@@ -1,0 +1,786 @@
+/**
+ * 统计页面样式
+ * Statistics Page Styles
+ */
+
+/* ========================================
+   页面容器
+   ======================================== */
+
+.statisticsPage {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  padding: var(--spacing-xl) var(--spacing-l);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   头部
+   ======================================== */
+
+.header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: var(--spacing-m) 0 var(--spacing-xs) 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+
+/* ========================================
+   统计卡片网格
+   ======================================== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-m);
+  margin-bottom: var(--spacing-xl);
+}
+
+.statCard {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-l);
+  border: 1px solid var(--color-border-light);
+  text-align: center;
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.statCard:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.statIcon {
+  font-size: 40px;
+  margin-bottom: var(--spacing-s);
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.statLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+
+/* ========================================
+   区块
+   ======================================== */
+
+.section {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-l);
+  border: 1px solid var(--color-border-light);
+  margin-bottom: var(--spacing-l);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-m) 0;
+}
+
+
+/* ========================================
+   排名列表
+   ======================================== */
+
+.rankList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.rankItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-micro) var(--ease);
+}
+
+.rankItem:hover {
+  background: var(--color-bg-primary);
+}
+
+.rankNumber {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-small);
+  flex-shrink: 0;
+}
+
+.rankInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.rankName {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rankDetail {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.rankBadge {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   标签统计
+   ======================================== */
+
+.tagStats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.tagStatItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+.tagStatLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.tagStatBar {
+  flex: 1;
+  height: 24px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.tagStatFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-hover));
+  transition: width var(--duration-normal) var(--ease);
+  border-radius: var(--radius-sm);
+}
+
+.tagStatCount {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+  min-width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   年度图表
+   ======================================== */
+
+.yearlyChart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-m);
+  height: 200px;
+  padding: var(--spacing-m) 0;
+}
+
+.yearBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.yearLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.yearBarContainer {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.yearBarFill {
+  width: 60%;
+  background: linear-gradient(180deg, var(--color-accent-primary), var(--color-accent-hover));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height var(--duration-normal) var(--ease);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: var(--spacing-xs);
+  min-height: 40px;
+}
+
+.yearBarValue {
+  font-size: var(--font-size-small);
+  color: white;
+  font-weight: var(--font-weight-bold);
+}
+
+
+/* ========================================
+   最近访问列表
+   ======================================== */
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.recentItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-s);
+}
+
+.recentDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  flex-shrink: 0;
+}
+
+.recentInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.recentName {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recentDate {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========================================
+   空状态
+   ======================================== */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  opacity: 0.3;
+  margin-bottom: var(--spacing-m);
+}
+
+.emptyTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-s);
+}
+
+.emptyText {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .statisticsPage {
+    padding: var(--spacing-m);
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-s);
+  }
+
+  .statCard {
+    padding: var(--spacing-m);
+  }
+
+  .statIcon {
+    font-size: 32px;
+  }
+
+  .statValue {
+    font-size: 28px;
+  }
+
+  .section {
+    padding: var(--spacing-m);
+  }
+
+  .yearlyChart {
+    height: 150px;
+  }
+
+  .rankItem {
+    padding: var(--spacing-s);
+  }
+}
+
+
+/* ========================================
+   Tab 切换
+   ======================================== */
+
+.tabBar {
+  display: flex;
+  gap: var(--spacing-s);
+  margin-bottom: var(--spacing-xl);
+  background: var(--color-bg-card);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.tab {
+  flex: 1;
+  padding: var(--spacing-m) var(--spacing-l);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.tab:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.tab.activeTab {
+  background: var(--color-accent-primary);
+  color: white;
+}
+
+
+/* ========================================
+   年份筛选
+   ======================================== */
+
+.filterSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  margin-bottom: var(--spacing-l);
+  padding: var(--spacing-m);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.filterLabel {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.yearFilters {
+  display: flex;
+  gap: var(--spacing-s);
+  flex-wrap: wrap;
+}
+
+.yearFilter {
+  padding: var(--spacing-xs) var(--spacing-m);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.yearFilter:hover {
+  background: var(--color-bg-primary);
+  border-color: var(--color-border-medium);
+}
+
+.yearFilter.activeFilter {
+  background: var(--color-accent-primary);
+  color: white;
+  border-color: var(--color-accent-primary);
+}
+
+
+/* ========================================
+   时间线统计信息
+   ======================================== */
+
+.timelineStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-m);
+  margin-bottom: var(--spacing-xl);
+}
+
+.timelineStatItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-l);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.timelineStatValue {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary);
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timelineStatLabel {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+
+/* ========================================
+   时间线内容
+   ======================================== */
+
+.timelineContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   月份分组
+   ======================================== */
+
+.monthGroup {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.monthHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-l);
+  padding-bottom: var(--spacing-m);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.monthTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.monthCount {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+
+/* ========================================
+   时间线项
+   ======================================== */
+
+.timelineItems {
+  position: relative;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--spacing-l);
+  margin-bottom: var(--spacing-l);
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ========================================
+   时间轴线条
+   ======================================== */
+
+.timelineLine {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--color-accent-primary);
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timelineConnector {
+  width: 2px;
+  flex: 1;
+  background: var(--color-border-medium);
+  margin-top: var(--spacing-xs);
+}
+
+
+/* ========================================
+   事件卡片
+   ======================================== */
+
+.eventCard {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-l);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-light);
+  transition: all var(--duration-fast) var(--ease);
+  position: relative;
+}
+
+.eventCard:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-m);
+  gap: var(--spacing-m);
+}
+
+.eventTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  flex: 1;
+}
+
+.locationIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.locationName {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.eventDate {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   事件详情
+   ======================================== */
+
+.eventTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-m);
+}
+
+.eventNotes {
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-m);
+}
+
+.eventPhotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-s);
+  margin-bottom: var(--spacing-m);
+}
+
+.photoThumb {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+}
+
+.photoThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease);
+}
+
+.photoThumb:hover img {
+  transform: scale(1.05);
+}
+
+.morePhotos {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+}
+
+.revisitBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 4px var(--spacing-s);
+  background: var(--color-accent-secondary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .statCard,
+  .rankItem,
+  .tagStatFill,
+  .yearBarFill,
+  .eventCard,
+  .photoThumb img {
+    transition: none;
+  }
+
+  .statCard:hover,
+  .eventCard:hover {
+    transform: none;
+  }
+}
+
+
+/* ========================================
+   图表容器
+   ======================================== */
+
+.chartContainer {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-l);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-light);
+}
+
+.chartTooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-s) var(--spacing-m);
+  box-shadow: var(--shadow-medium);
+}
+
+.tooltipLabel {
+  margin: 0 0 4px 0;
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tooltipValue {
+  margin: 0;
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.tooltipValue strong {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-bold);
+}

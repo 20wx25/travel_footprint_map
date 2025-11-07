@@ -1,0 +1,135 @@
+/**
+ * CSS Reset
+ * 现代化的CSS重置样式
+ */
+
+/* Box sizing规则 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 移除默认边距和内边距 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 设置根元素 */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+}
+
+/* Body默认样式 */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* 图片和媒体元素 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 表单元素 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 移除按钮默认样式 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* 文本元素 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 列表 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 链接 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 表格 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 移除outline（但保留键盘导航的可访问性） */
+*:focus {
+  outline: none;
+}
+
+/* 键盘导航时显示focus样式 */
+*:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* 禁用iOS系统默认的点击高亮 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 滚动条样式（Webkit） */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* 选中文本的背景色 */
+::selection {
+  background: var(--color-accent-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--color-accent-primary);
+  color: white;
+}

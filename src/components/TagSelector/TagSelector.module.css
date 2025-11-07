@@ -1,0 +1,196 @@
+/**
+ * 标签选择器样式
+ * Tag Selector Styles
+ */
+
+/* ========================================
+   容器
+   ======================================== */
+
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+
+/* ========================================
+   标签网格
+   ======================================== */
+
+.tagGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-s);
+}
+
+
+/* ========================================
+   标签按钮
+   ======================================== */
+
+.tagButton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  min-height: 80px;
+}
+
+.tagButton:hover {
+  background: var(--tag-light-color);
+  border-color: var(--tag-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tagButton.selected {
+  background: var(--tag-light-color);
+  border-color: var(--tag-color);
+  border-width: 2px;
+  box-shadow: 0 0 0 3px var(--tag-light-color);
+}
+
+.tagButton.selected:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+              0 0 0 3px var(--tag-light-color);
+}
+
+
+/* ========================================
+   标签内容
+   ======================================== */
+
+.tagEmoji {
+  font-size: 24px;
+  line-height: 1;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.tagButton:hover .tagEmoji {
+  transform: scale(1.1);
+}
+
+.tagButton.selected .tagEmoji {
+  transform: scale(1.15);
+}
+
+.tagName {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: var(--line-height-tight);
+}
+
+.tagButton.selected .tagName {
+  color: var(--tag-color);
+}
+
+
+/* ========================================
+   选中标记
+   ======================================== */
+
+.checkmark {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tag-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  animation: checkmarkPop 0.3s var(--ease-out);
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* ========================================
+   提示信息
+   ======================================== */
+
+.hint {
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-accent-primary);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .tagGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--spacing-xs);
+  }
+
+  .tagButton {
+    padding: var(--spacing-s);
+    min-height: 70px;
+  }
+
+  .tagEmoji {
+    font-size: 20px;
+  }
+
+  .tagName {
+    font-size: 11px;
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .tagButton {
+    transition: none;
+  }
+
+  .tagButton:hover {
+    transform: none;
+  }
+
+  .tagButton:hover .tagEmoji,
+  .tagButton.selected .tagEmoji {
+    transform: none;
+  }
+
+  .checkmark {
+    animation: none;
+  }
+}

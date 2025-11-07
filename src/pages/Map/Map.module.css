@@ -1,0 +1,574 @@
+/**
+ * 地图主界面样式
+ * Main Map Interface Styles
+ */
+
+/* ========================================
+   页面容器
+   ======================================== */
+
+.mapPage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+
+/* ========================================
+   顶部导航栏
+   ======================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-l);
+  z-index: var(--z-header);
+  box-shadow: var(--shadow-light);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-l);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  cursor: default;
+}
+
+.logoIcon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.logoText {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+/* 用户信息 */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--spacing-xs) var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.userAvatar {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.userAvatarImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-border-light);
+}
+
+.userEmail {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 定位按钮 */
+.locateButton {
+  white-space: nowrap;
+}
+
+/* 设置按钮 */
+.settingsButton {
+  color: var(--color-text-secondary);
+}
+
+.settingsButton:hover {
+  color: var(--color-accent-primary);
+}
+
+/* 退出登录按钮 */
+.logoutButton {
+  color: var(--color-text-secondary);
+}
+
+.logoutButton:hover {
+  color: var(--color-danger);
+}
+
+
+/* ========================================
+   地图容器
+   ======================================== */
+
+.mapContainer {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-base);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* 自定义 Leaflet 控件样式 */
+.map :global(.leaflet-control-zoom) {
+  border: none;
+  box-shadow: var(--shadow-medium);
+}
+
+.map :global(.leaflet-control-zoom a) {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--duration-micro) var(--ease);
+}
+
+.map :global(.leaflet-control-zoom a:hover) {
+  background: var(--color-accent-primary);
+  color: white;
+  border-color: var(--color-accent-primary);
+}
+
+
+/* ========================================
+   标记弹窗
+   ======================================== */
+
+.markerPopup {
+  min-width: 220px;
+  padding: var(--spacing-m);
+  animation: popupFadeIn 0.3s var(--ease-out);
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markerName {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-s) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.markerName::before {
+  content: '📍';
+  font-size: 20px;
+}
+
+.popupTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-s) 0;
+}
+
+.popupTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px var(--spacing-xs);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+}
+
+.markerDate,
+.markerCoords {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xs) 0;
+  line-height: var(--line-height-relaxed);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.viewDetailButton {
+  width: 100%;
+  margin-top: var(--spacing-m);
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--color-accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  box-shadow: none;
+}
+
+.viewDetailButton:hover {
+  background: var(--color-accent-hover);
+}
+
+.viewDetailButton:active {
+  background: var(--color-accent-active);
+}
+
+
+/* ========================================
+   添加模式提示
+   ======================================== */
+
+.addModeHint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-accent-primary);
+  color: white;
+  padding: var(--spacing-m) var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-medium);
+  z-index: var(--z-modal);
+  pointer-events: none;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+
+/* ========================================
+   浮动操作按钮 (FAB)
+   ======================================== */
+
+.fabContainer {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: var(--z-fab);
+}
+
+.fab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m) var(--spacing-l);
+  background: var(--color-accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  animation: fabEntrance 0.3s var(--ease-out);
+}
+
+@keyframes fabEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fab:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-heavy);
+}
+
+.fab:active {
+  background: var(--color-accent-active);
+}
+
+.fabIcon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.fabText {
+  font-size: var(--font-size-body);
+}
+
+
+/* ========================================
+   删除确认对话框
+   ======================================== */
+
+.deleteConfirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.deleteMessage {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.deleteMessage strong {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-bold);
+}
+
+.deleteWarning {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: var(--spacing-m);
+  background: var(--color-warning-bg);
+  border-left: 3px solid var(--color-warning);
+  border-radius: var(--radius-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.deleteActions {
+  display: flex;
+  gap: var(--spacing-m);
+}
+
+.deleteActions > * {
+  flex: 1;
+}
+
+
+/* ========================================
+   页面切换动画
+   ======================================== */
+
+.pageEnter {
+  animation: pageSlideIn 0.4s var(--ease-out);
+}
+
+.pageExit {
+  animation: pageSlideOut 0.4s var(--ease-out) forwards;
+  pointer-events: none;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.settingsPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-overlay);
+  background: var(--color-bg-primary);
+  overflow-y: auto;
+}
+
+
+/* ========================================
+   开发提示
+   ======================================== */
+
+.devNote {
+  position: fixed;
+  bottom: var(--spacing-l);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-small);
+  color: var(--color-success);
+  padding: var(--spacing-s) var(--spacing-l);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(124, 185, 125, 0.2);
+  box-shadow: var(--shadow-light);
+  z-index: var(--z-modal);
+  animation: slideInFromBottom 0.3s var(--ease-out);
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
+/* ========================================
+   响应式设计 - 平板
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 var(--spacing-m);
+  }
+
+  .userEmail {
+    max-width: 120px;
+  }
+
+  .fabContainer {
+    bottom: var(--spacing-l);
+    right: var(--spacing-l);
+  }
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+    padding: 0 var(--spacing-s);
+  }
+
+  .mapContainer {
+    top: 56px;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .logoIcon {
+    font-size: 24px;
+  }
+
+  .userEmail {
+    display: none;
+  }
+
+  .userInfo {
+    padding: var(--spacing-xs);
+    min-width: auto;
+  }
+
+  .locateButton span {
+    display: none;
+  }
+
+  .locateButton::after {
+    content: '📍';
+  }
+
+  .fabContainer {
+    bottom: var(--spacing-m);
+    right: var(--spacing-m);
+  }
+
+  .fab {
+    padding: var(--spacing-m);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  .fabText {
+    display: none;
+  }
+
+  .fabIcon {
+    font-size: 24px;
+  }
+
+  .devNote {
+    bottom: var(--spacing-m);
+    left: var(--spacing-m);
+    right: var(--spacing-m);
+    transform: none;
+    text-align: center;
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .fab:hover {
+    transform: none;
+  }
+
+  .devNote {
+    animation: none;
+  }
+
+  .pageEnter,
+  .pageExit {
+    animation: none;
+  }
+}

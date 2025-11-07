@@ -1,0 +1,275 @@
+/**
+ * Button 按钮组件样式
+ * 基于 DESIGN_SPEC.md 的设计规范
+ */
+
+/* ========================================
+   基础按钮样式
+   ======================================== */
+
+.button {
+  /* 布局 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+
+  /* 尺寸 */
+  padding: var(--button-padding);
+  min-height: var(--button-height);
+
+  /* 字体 */
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+
+  /* 外观 */
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+
+  /* 过渡动效 */
+  transition: all var(--duration-micro) var(--ease);
+
+  /* 文字不换行 */
+  white-space: nowrap;
+
+  /* 用户选择 */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+
+/* ========================================
+   按钮变体 - Variants
+   ======================================== */
+
+/* 主按钮 - Primary */
+.button.primary {
+  background: var(--color-accent-primary);
+  color: #FFFFFF;
+  box-shadow: none;
+}
+
+.button.primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.button.primary:active:not(:disabled) {
+  background: var(--color-accent-active);
+}
+
+.button.primary:disabled {
+  background: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 次要按钮 - Secondary */
+.button.secondary {
+  background: transparent;
+  color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background: rgba(107, 165, 214, 0.08);
+}
+
+.button.secondary:active:not(:disabled) {
+  background: rgba(107, 165, 214, 0.12);
+}
+
+.button.secondary:disabled {
+  color: var(--color-text-tertiary);
+  border-color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 文字按钮 - Text */
+.button.text {
+  background: transparent;
+  color: var(--color-accent-primary);
+  padding: var(--spacing-xs) var(--spacing-s);
+  box-shadow: none;
+}
+
+.button.text:hover:not(:disabled) {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.button.text:active:not(:disabled) {
+  color: var(--color-accent-active);
+}
+
+.button.text:disabled {
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 危险按钮 - Danger */
+.button.danger {
+  background: transparent;
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.button.danger:hover:not(:disabled) {
+  background: rgba(217, 133, 124, 0.08);
+}
+
+.button.danger:active:not(:disabled) {
+  background: rgba(217, 133, 124, 0.12);
+}
+
+.button.danger:disabled {
+  color: var(--color-text-tertiary);
+  border-color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+/* ========================================
+   按钮尺寸 - Sizes
+   ======================================== */
+
+.button.small {
+  padding: 8px 16px;
+  font-size: var(--font-size-small);
+  min-height: 36px;
+}
+
+.button.medium {
+  padding: 12px 24px;
+  font-size: var(--font-size-body);
+  min-height: var(--button-height);
+}
+
+.button.large {
+  padding: 16px 32px;
+  font-size: var(--font-size-h3);
+  min-height: 52px;
+}
+
+
+/* ========================================
+   按钮状态 - States
+   ======================================== */
+
+/* 全宽按钮 */
+.button.fullWidth {
+  width: 100%;
+}
+
+/* 加载状态 */
+.button.loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinnerIcon {
+  width: 16px;
+  height: 16px;
+  animation: spin var(--duration-slow) linear infinite;
+}
+
+.spinnerCircle {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 45;
+  opacity: 0.9;
+  animation: spinnerDash 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerDash {
+  0% {
+    stroke-dashoffset: 60;
+  }
+  50% {
+    stroke-dashoffset: 15;
+  }
+  100% {
+    stroke-dashoffset: 60;
+  }
+}
+
+.contentHidden {
+  visibility: hidden;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+
+/* ========================================
+   移动端适配
+   ======================================== */
+
+@media (max-width: 768px) {
+  .button {
+    min-height: var(--button-height-mobile);
+    padding: 14px 20px;
+  }
+
+  .button.small {
+    min-height: 40px;
+    padding: 10px 16px;
+  }
+
+  .button.large {
+    min-height: 56px;
+    padding: 18px 32px;
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover:not(:disabled) {
+    transform: none;
+  }
+
+  .spinnerIcon {
+    animation: none;
+  }
+}

@@ -1,0 +1,549 @@
+/**
+ * 标记详情样式
+ * Marker Detail Styles
+ */
+
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+
+/* ========================================
+   头部
+   ======================================== */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-m);
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.visitDate {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.visitCount {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-micro) var(--ease);
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+
+/* ========================================
+   标签显示区
+   ======================================== */
+
+.tagsSection {
+  padding: var(--spacing-m) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-m);
+  background: var(--tag-light-color);
+  border: 1.5px solid var(--tag-color);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--tag-color);
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tagEmoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tagName {
+  line-height: 1;
+}
+
+
+/* ========================================
+   照片轮播区
+   ======================================== */
+
+.photoSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.photoCarousel {
+  width: 100%;
+  max-height: 500px;
+  min-height: 300px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* 保持原始比例 */
+  display: block;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: none;
+  color: white;
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-micro) var(--ease);
+}
+
+.carouselButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.prevButton {
+  left: var(--spacing-m);
+}
+
+.nextButton {
+  right: var(--spacing-m);
+}
+
+.photoIndicator {
+  position: absolute;
+  bottom: var(--spacing-m);
+  right: var(--spacing-m);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-m);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.photoPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.placeholderIcon {
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.placeholderText {
+  font-size: var(--font-size-h3);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.placeholderHint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  max-width: 300px;
+}
+
+.photoCaption {
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+}
+
+
+/* ========================================
+   文字笔记区
+   ======================================== */
+
+.notesSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.notes {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-m);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.notesText {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-s) 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.notesCount {
+  font-size: var(--font-size-small);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}
+
+.notesPlaceholder {
+  padding: var(--spacing-l);
+  text-align: center;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-border-medium);
+}
+
+.notesPlaceholder p {
+  margin: var(--spacing-xs) 0;
+}
+
+
+/* ========================================
+   位置信息
+   ======================================== */
+
+.locationSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.coordinates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-m);
+}
+
+.coordItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.coordLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.coordValue {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent-primary);
+  font-family: 'Courier New', monospace;
+}
+
+
+/* ========================================
+   时间信息
+   ======================================== */
+
+.metaSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.metaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metaLabel {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.metaValue {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+
+/* ========================================
+   访问记录列表
+   ======================================== */
+
+.visitsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.visitsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-m);
+}
+
+.emptyVisits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--color-border-medium);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.emptyText {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.emptyHint {
+  font-size: var(--font-size-body);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  max-width: 300px;
+}
+
+
+/* ========================================
+   表单容器（添加/编辑访问记录）
+   ======================================== */
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-m);
+  padding-bottom: var(--spacing-m);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.backButton {
+  background: none;
+  border: none;
+  font-size: var(--font-size-body);
+  color: var(--color-accent-primary);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-s);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-micro) var(--ease);
+  font-weight: var(--font-weight-semibold);
+}
+
+.backButton:hover {
+  background: var(--color-bg-secondary);
+}
+
+.formTitle {
+  flex: 1;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  text-align: center;
+}
+
+
+/* ========================================
+   操作按钮
+   ======================================== */
+
+.actions {
+  display: flex;
+  gap: var(--spacing-m);
+  padding-top: var(--spacing-m);
+  border-top: 1px solid var(--color-border-light);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .detailContainer {
+    gap: var(--spacing-m);
+  }
+
+  .title {
+    font-size: var(--font-size-h3);
+  }
+
+  .visitDate,
+  .visitCount {
+    font-size: var(--font-size-small);
+  }
+
+  .photoSection {
+    aspect-ratio: 4 / 3;
+  }
+
+  .carouselButton {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .prevButton,
+  .nextButton {
+    left: var(--spacing-s);
+  }
+
+  .nextButton {
+    left: auto;
+    right: var(--spacing-s);
+  }
+
+  .placeholderIcon,
+  .emptyIcon {
+    font-size: 48px;
+  }
+
+  .coordinates {
+    grid-template-columns: 1fr;
+  }
+
+  .visitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .visitsSectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .formHeader {
+    gap: var(--spacing-s);
+  }
+
+  .formTitle {
+    font-size: var(--font-size-body);
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .carouselButton,
+  .backButton,
+  .closeButton,
+  .tag {
+    transition: none;
+  }
+}

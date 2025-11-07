@@ -1,0 +1,217 @@
+/**
+ * CSS 变量定义
+ * 基于 DESIGN_SPEC.md 的设计规范
+ * 温暖的极简主义（Warm Minimalism）
+ */
+
+:root {
+  /* ========================================
+     颜色系统 - Color System
+     ======================================== */
+
+  /* 背景色系 */
+  --color-bg-primary: #FAFAF8;        /* 主背景 - 温暖的米白色 */
+  --color-bg-secondary: #F5F3F0;      /* 次级背景 - 浅沙色 */
+  --color-bg-card: #FFFFFF;           /* 卡片背景 - 纯白 */
+
+  /* 文字色系 */
+  --color-text-primary: #2C2C2E;      /* 主要文字 - 深灰 */
+  --color-text-secondary: #6E6E73;    /* 次要文字 - 中灰 */
+  --color-text-tertiary: #AEAEB2;     /* 辅助文字 - 浅灰 */
+  --color-text-placeholder: #C7C7CC;  /* 占位文字 - 极浅灰 */
+
+  /* 分割线/边框 */
+  --color-border-primary: rgba(0, 0, 0, 0.08);
+  --color-border-light: rgba(0, 0, 0, 0.04);
+  --color-border-hover: rgba(0, 0, 0, 0.20);
+
+  /* 主强调色 - 天空蓝 */
+  --color-accent-primary: #6BA5D6;
+  --color-accent-hover: #5A94C5;
+  --color-accent-active: #4983B4;
+
+  /* 次强调色 - 状态提示 */
+  --color-success: #7CB97D;           /* 成功/自然绿 */
+  --color-warning: #E8A87C;           /* 警告/温暖橙 */
+  --color-error: #D9857C;             /* 错误/柔和红 */
+  --color-info: #8BBDD9;              /* 信息/淡蓝 */
+
+  /* 图钉标记色 */
+  --color-pin-primary: #D97C5C;       /* 温暖的橙红色 */
+  --color-pin-hover: #C8684B;
+  --color-pin-shadow: rgba(217, 124, 92, 0.3);
+
+
+  /* ========================================
+     字体系统 - Typography
+     ======================================== */
+
+  /* 字体家族 */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "PingFang SC", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  /* 字体大小 - 桌面端 */
+  --font-size-h1: 28px;
+  --font-size-h2: 22px;
+  --font-size-h3: 18px;
+  --font-size-body: 15px;
+  --font-size-small: 13px;
+  --font-size-tiny: 11px;
+
+  /* 字体粗细 */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* 行高 */
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.5;
+
+  /* 字间距 */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: -0.3px;
+
+
+  /* ========================================
+     间距系统 - Spacing (8px栅格)
+     ======================================== */
+
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-s: 12px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* 容器内边距 */
+  --container-padding-desktop: 32px;
+  --container-padding-tablet: 24px;
+  --container-padding-mobile: 16px;
+
+
+  /* ========================================
+     圆角系统 - Border Radius（极简现代风格）
+     ======================================== */
+
+  --radius-sm: 4px;       /* 按钮/小组件 */
+  --radius-md: 6px;       /* 输入框/图片缩略图 */
+  --radius-lg: 8px;       /* 卡片/模态框 */
+  --radius-xl: 12px;      /* 大卡片/面板 */
+  --radius-full: 50%;     /* 圆形 */
+
+
+  /* ========================================
+     阴影系统 - Shadows（极简扁平风格）
+     ======================================== */
+
+  /* 轻阴影 - 悬浮元素 */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  /* 中阴影 - 卡片、弹窗 */
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* 深阴影 - 模态框、重要提示 */
+  --shadow-heavy: 0 4px 16px rgba(0, 0, 0, 0.10);
+
+  /* 内阴影 - 输入框聚焦 */
+  --shadow-inset-focus: inset 0 0 0 2px var(--color-accent-primary);
+  --shadow-inset-error: inset 0 0 0 2px var(--color-error);
+
+
+  /* ========================================
+     动效系统 - Transitions
+     ======================================== */
+
+  /* 动效时长 */
+  --duration-micro: 150ms;      /* 微动效 - 悬停、点击反馈 */
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;     /* 标准动效 - 卡片弹出、页面切换 */
+  --duration-slow: 400ms;       /* 复杂动效 - 全屏过渡、列表动画 */
+
+  /* 缓动函数 */
+  --ease-in-out: ease-in-out;
+  --ease-out: ease-out;
+  --ease: ease;
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+
+  /* ========================================
+     响应式断点 - Breakpoints
+     ======================================== */
+
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1440px;
+
+
+  /* ========================================
+     Z-Index 层级
+     ======================================== */
+
+  --z-base: 1;
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-sticky: 300;
+  --z-fab: 400;
+  --z-modal: 1000;
+  --z-toast: 1100;
+
+  /* 兼容旧命名 */
+  --z-index-base: 1;
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-modal-backdrop: 900;
+  --z-index-modal: 1000;
+  --z-index-toast: 1100;
+
+
+  /* ========================================
+     组件特定变量
+     ======================================== */
+
+  /* 导航栏高度 */
+  --navbar-height-desktop: 64px;
+  --navbar-height-tablet: 56px;
+  --navbar-height-mobile: 48px;
+
+  /* 按钮 */
+  --button-padding: 12px 24px;
+  --button-height: 44px;
+  --button-height-mobile: 48px;
+
+  /* 输入框 */
+  --input-height: 44px;
+  --input-padding: 12px 16px;
+
+  /* 悬浮按钮 */
+  --fab-size: 56px;
+  --fab-offset: 24px;
+
+  /* 卡片 */
+  --card-max-width: 600px;
+  --card-padding: 24px;
+  --card-padding-mobile: 16px;
+
+  /* 照片轮播 */
+  --carousel-height-desktop: 400px;
+  --carousel-height-tablet: 300px;
+  --carousel-height-mobile: 250px;
+}
+
+
+/* ========================================
+   移动端变量覆盖
+   ======================================== */
+
+@media (max-width: 768px) {
+  :root {
+    /* 移动端字体大小调整 */
+    --font-size-h1: 24px;
+    --font-size-h2: 20px;
+    --font-size-h3: 17px;
+    /* 其他字体大小保持不变 */
+  }
+}

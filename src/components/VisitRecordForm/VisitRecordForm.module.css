@@ -1,0 +1,86 @@
+/**
+ * 访问记录表单样式
+ * Visit Record Form Styles
+ */
+
+/* ========================================
+   表单容器
+   ======================================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+
+/* ========================================
+   地点提示
+   ======================================== */
+
+.locationHint {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-accent-primary);
+}
+
+.locationIcon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.locationName {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+
+/* ========================================
+   章节
+   ======================================== */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+
+/* ========================================
+   按钮组
+   ======================================== */
+
+.buttonGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-m);
+  padding-top: var(--spacing-m);
+  border-top: 1px solid var(--color-border-light);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .form {
+    gap: var(--spacing-m);
+  }
+
+  .buttonGroup {
+    grid-template-columns: 1fr;
+  }
+}

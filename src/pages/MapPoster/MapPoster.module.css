@@ -1,0 +1,566 @@
+/**
+ * 地图海报生成器样式
+ * Map Poster Generator Styles
+ */
+
+/* ========================================
+   页面容器
+   ======================================== */
+
+.posterPage {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  padding: var(--spacing-xl) var(--spacing-l);
+}
+
+
+/* ========================================
+   头部
+   ======================================== */
+
+.header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: var(--spacing-m) 0 var(--spacing-xs) 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+
+/* ========================================
+   内容区域
+   ======================================== */
+
+.content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+
+/* ========================================
+   配置面板
+   ======================================== */
+
+.configPanel {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-l);
+  border: 1px solid var(--color-border-light);
+  position: sticky;
+  top: var(--spacing-l);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-l) 0;
+}
+
+.configSection {
+  margin-bottom: var(--spacing-l);
+}
+
+.label {
+  display: block;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-s);
+}
+
+.themeOptions {
+  display: flex;
+  gap: var(--spacing-s);
+}
+
+.themeOption {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-s);
+  background: var(--color-bg-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.themeOption:hover {
+  border-color: var(--color-border-medium);
+}
+
+.themeOption.active {
+  border-color: var(--color-accent-primary);
+  background: var(--color-bg-primary);
+}
+
+.themePreview {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-light);
+}
+
+.uploadControls {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.uploadButton {
+  flex: 1;
+}
+
+.removeButton {
+  color: var(--color-text-secondary);
+  padding: var(--spacing-xs);
+  min-width: auto;
+}
+
+.backgroundPreview {
+  margin-top: var(--spacing-s);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--color-border-light);
+}
+
+.backgroundPreview img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+.generateButton {
+  width: 100%;
+  margin-top: var(--spacing-m);
+}
+
+
+/* ========================================
+   海报预览区域
+   ======================================== */
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+.previewLabel {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  align-self: flex-start;
+}
+
+
+/* ========================================
+   海报样式
+   ======================================== */
+
+.poster {
+  width: 600px;
+  min-height: 900px;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+}
+
+/* 自定义背景图片层（带白边效果） */
+.posterBackgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 白边效果通过内边距实现 */
+  margin: 30px;
+  border-radius: var(--radius-md);
+  z-index: 0;
+}
+
+/* 背景遮罩层（调整透明度以提高文字可读性） */
+.posterBackgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 海报内容容器 */
+.posterContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 900px;
+}
+
+/* 经典主题 */
+.poster.theme-classic {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 现代主题 */
+.poster.theme-modern {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* 简约主题 */
+.poster.theme-minimal {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+
+/* ========================================
+   海报内容
+   ======================================== */
+
+.posterHeader {
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-s);
+  text-align: center;
+  color: white;
+}
+
+.posterTitle {
+  font-size: 42px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-xs) 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  line-height: 1.2;
+}
+
+.posterSubtitle {
+  font-size: 20px;
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
+
+/* 世界地图区域 */
+.worldMapSection {
+  margin: 0 var(--spacing-xl) var(--spacing-m);
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.statsSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-s);
+  padding: 0 var(--spacing-xl) var(--spacing-m);
+}
+
+.statBox {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-m) var(--spacing-s);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.statIcon {
+  font-size: 24px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.locationsSection {
+  background: rgba(255, 255, 255, 0.95);
+  margin: 0 var(--spacing-xl) var(--spacing-m);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-m);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.locationsSectionTitle {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-s);
+  text-align: center;
+}
+
+.locationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.locationItem {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: 6px var(--spacing-s);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.locationRank {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.locationName {
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.locationVisits {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.posterFooter {
+  padding: var(--spacing-m) var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-top: var(--spacing-m);
+}
+
+.footerText {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.9;
+}
+
+.footerIcon {
+  font-size: 24px;
+}
+
+
+/* ========================================
+   空状态
+   ======================================== */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  opacity: 0.3;
+  margin-bottom: var(--spacing-m);
+}
+
+.emptyTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-s);
+}
+
+.emptyText {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .configPanel {
+    position: static;
+  }
+
+  .poster {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .posterPage {
+    padding: var(--spacing-m);
+  }
+
+  .poster {
+    max-width: 400px;
+  }
+
+  .posterTitle {
+    font-size: 32px;
+  }
+
+  .posterSubtitle {
+    font-size: 16px;
+  }
+
+  .statsSection {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-s);
+    padding: 0 var(--spacing-m) var(--spacing-s);
+  }
+
+  .statBox {
+    padding: var(--spacing-s);
+  }
+
+  .statIcon {
+    font-size: 20px;
+  }
+
+  .statValue {
+    font-size: 22px;
+  }
+
+  .statLabel {
+    font-size: 10px;
+  }
+
+  .worldMapSection {
+    margin: 0 var(--spacing-m) var(--spacing-s);
+    height: 220px;
+  }
+
+  .locationsSection {
+    margin: 0 var(--spacing-m) var(--spacing-s);
+    padding: var(--spacing-s);
+  }
+
+  .locationsSectionTitle {
+    font-size: 14px;
+  }
+
+  .locationItem {
+    padding: 4px var(--spacing-xs);
+  }
+
+  .locationRank {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .locationName {
+    font-size: 11px;
+  }
+
+  .locationVisits {
+    font-size: 10px;
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .themeOption {
+    transition: none;
+  }
+}

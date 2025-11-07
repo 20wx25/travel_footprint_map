@@ -1,0 +1,21 @@
+/**
+ * 海报专用地图组件样式
+ * Poster Map Component Styles
+ */
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 隐藏Leaflet的版权信息 */
+.mapContainer :global(.leaflet-control-attribution) {
+  display: none !important;
+}
+
+/* 确保地图瓦片加载正常 */
+.mapContainer :global(.leaflet-tile-container) {
+  pointer-events: none;
+}

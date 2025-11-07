@@ -1,0 +1,151 @@
+/**
+ * App 组件样式
+ */
+
+.app {
+  min-height: 100vh;
+  padding: var(--spacing-xl) var(--spacing-l);
+}
+
+.app-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.app h1 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-s);
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+  text-align: center;
+  margin-bottom: var(--spacing-l);
+}
+
+/* 状态卡片 */
+.status-card h2 {
+  color: var(--color-success);
+  margin-bottom: var(--spacing-l);
+}
+
+.status-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--spacing-l);
+}
+
+.status-list li {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  padding: var(--spacing-xs) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.status-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--color-success);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.next-step {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold);
+  padding-top: var(--spacing-l);
+  border-top: 1px solid var(--color-border-primary);
+}
+
+/* 演示区域 */
+.demo-section h3 {
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-primary);
+  padding-bottom: var(--spacing-m);
+  border-bottom: 2px solid var(--color-border-primary);
+}
+
+.demo-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.demo-group:last-child {
+  margin-bottom: 0;
+}
+
+.demo-group h4 {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body);
+  margin-bottom: var(--spacing-m);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-group h5 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--spacing-xs);
+}
+
+.demo-group p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* 按钮组 */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-m);
+  align-items: center;
+}
+
+/* 加载演示 */
+.loading-demo {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-end;
+}
+
+.loading-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+/* 卡片网格 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-m);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .app {
+    padding: var(--spacing-l) var(--spacing-m);
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .loading-demo {
+    justify-content: space-around;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

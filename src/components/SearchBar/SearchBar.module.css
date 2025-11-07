@@ -1,0 +1,303 @@
+/**
+ * 地点搜索组件样式
+ * Location Search Bar Styles
+ */
+
+/* ========================================
+   搜索栏容器
+   ======================================== */
+
+.searchBar {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+
+/* ========================================
+   搜索输入框
+   ======================================== */
+
+.searchInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-m);
+  transition: all var(--duration-micro) var(--ease);
+  box-shadow: none;
+}
+
+.searchInputContainer:focus-within {
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 2px rgba(107, 165, 214, 0.1);
+}
+
+.searchIcon {
+  font-size: 20px;
+  margin-right: var(--spacing-s);
+  color: var(--color-text-secondary);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  background: transparent;
+  padding: var(--spacing-xs) 0;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  margin-left: var(--spacing-xs);
+  border-radius: 50%;
+  transition: all var(--duration-micro) var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.clearButton:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.loadingSpinner {
+  font-size: 18px;
+  margin-left: var(--spacing-xs);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ========================================
+   搜索结果下拉列表
+   ======================================== */
+
+.searchResults {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  z-index: var(--z-dropdown);
+  max-height: 400px;
+  overflow-y: auto;
+  animation: slideDown var(--duration-fast) var(--ease);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultsHeader {
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.resultsCount {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resultsList {
+  padding: var(--spacing-xs) 0;
+}
+
+.resultItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-m);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+}
+
+.resultItem:hover {
+  background: var(--color-bg-secondary);
+}
+
+.resultIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.resultContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  overflow: hidden;
+}
+
+.resultName {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultAddress {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultAction {
+  font-size: 20px;
+  color: var(--color-accent-primary);
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   空状态
+   ======================================== */
+
+.emptyState {
+  padding: var(--spacing-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  opacity: 0.3;
+}
+
+.emptyText {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.emptyHint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .searchBar {
+    max-width: none;
+  }
+
+  .searchInputContainer {
+    padding: var(--spacing-xs) var(--spacing-s);
+  }
+
+  .searchInput {
+    font-size: var(--font-size-small);
+  }
+
+  .searchInput::placeholder {
+    font-size: var(--font-size-tiny);
+  }
+
+  .searchResults {
+    max-height: 300px;
+  }
+
+  .resultItem {
+    padding: var(--spacing-s);
+  }
+
+  .resultIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .resultName {
+    font-size: var(--font-size-small);
+  }
+
+  .resultAddress {
+    font-size: var(--font-size-tiny);
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .searchResults {
+    animation: none;
+  }
+
+  .loadingSpinner {
+    animation: none;
+  }
+
+  .clearButton,
+  .resultItem {
+    transition: none;
+  }
+}

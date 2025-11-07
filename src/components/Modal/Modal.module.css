@@ -1,0 +1,223 @@
+/**
+ * 模态框样式
+ * Modal Styles
+ */
+
+/* ========================================
+   遮罩层
+   ======================================== */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--spacing-l);
+  animation: overlayFadeIn 0.3s var(--ease-out);
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+
+/* ========================================
+   模态框容器
+   ======================================== */
+
+.modalContainer {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s var(--ease-out);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 尺寸变体 */
+.small {
+  width: 100%;
+  max-width: 400px;
+}
+
+.medium {
+  width: 100%;
+  max-width: 700px;
+}
+
+.large {
+  width: 100%;
+  max-width: 1000px;
+}
+
+
+/* ========================================
+   头部
+   ======================================== */
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-l);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.modalTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.closeButton:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.closeButton:active {
+  background: var(--color-border-light);
+}
+
+
+/* ========================================
+   内容区
+   ======================================== */
+
+.modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-l);
+}
+
+/* 自定义滚动条 */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: var(--color-border-medium);
+  border-radius: var(--radius-sm);
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+
+/* ========================================
+   底部
+   ======================================== */
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-m);
+  padding: var(--spacing-l);
+  border-top: 1px solid var(--color-border-light);
+}
+
+
+/* ========================================
+   响应式设计 - 移动端
+   ======================================== */
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: var(--spacing-m);
+  }
+
+  .modalContainer {
+    max-height: 95vh;
+  }
+
+  .modalHeader {
+    padding: var(--spacing-m);
+  }
+
+  .modalTitle {
+    font-size: var(--font-size-h3);
+  }
+
+  .modalContent {
+    padding: var(--spacing-m);
+  }
+
+  .modalFooter {
+    padding: var(--spacing-m);
+    gap: var(--spacing-s);
+  }
+
+  /* 移动端所有尺寸统一 */
+  .small,
+  .medium,
+  .large {
+    max-width: 100%;
+  }
+}
+
+
+/* ========================================
+   减少动效偏好支持（可访问性）
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .modalOverlay {
+    animation: none;
+  }
+
+  .modalContainer {
+    animation: none;
+  }
+
+  .closeButton:active {
+    transform: none;
+  }
+}
